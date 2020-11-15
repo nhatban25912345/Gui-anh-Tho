@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin tài khoản</title>
+    <link rel="stylesheet" href="./CSS/Main.css">
+    <LINK REL="SHORTCUT ICON" HREF="./Image/icon.jpg">
+
+    <!-- Script  -->
+    <!-- fire base  -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+                https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCh5KOwdMPrF4k1iBbc3-1b980VE0VpWKc",
+            authDomain: "dang-ky-hoc-phan.firebaseapp.com",
+            databaseURL: "https://dang-ky-hoc-phan.firebaseio.com",
+            projectId: "dang-ky-hoc-phan",
+            storageBucket: "dang-ky-hoc-phan.appspot.com",
+            messagingSenderId: "648283742702",
+            appId: "1:648283742702:web:9192dd2eccb428358d6eff"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <!-- Random - md5 password -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.1/uuid.min.js"
+        integrity="sha512-4JH7nC4nSqPixxbhZCLETJ+DUfHa+Ggk90LETm25fi/SitneSvtxkcWAUujvYrgKgvrvwv4NDAsFgdwCS79Dcw=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"
+        integrity="sha512-nOQuvD9nKirvxDdvQ9OMqe2dgapbPB7vYAMrzJihw5m+aNcf0dX53m6YxM4LgA9u8e9eg9QX+/+mPu8kCNpV2A=="
+        crossorigin="anonymous"></script>
+    <!-- Navigo - chuyển đổi địa chỉ trang  -->
+    <script src="//unpkg.com/navigo@6"></script>
+
+    <!-- Css  -->
+    <!-- <link rel="stylesheet" href="./CSS/Main.css"> -->
+
+</head>
+
+<!-- body  -->
+
+<body>
+    <div id="container">
+        <div class="head">
+            <!-- Navbar  -->
+            <!-- logo="http://www.dolphin-si.it/wp-content/uploads/2017/09/msi-logo-small.png" -->
+            <main-navbar title1="Đăng ký học phần" title2="Thông tin học phần" title3="Thông tin tài khoản" title4=""
+                title5="">
+            </main-navbar>
+        </div>
+        <div id="app">
+            <student-profile></student-profile>
+        </div>
+        <div class="footer">
+            <img id="imageFooter" src="./Image/banner_left.png" alt="">
+        </div>
+    </div>
+
+
+</body>
+<!-- Template -->
+<template id="main-navbar">
+    <link rel="stylesheet" href="./CSS/Navbar.css">
+    <div class="navbar-container">
+        <!-- <img id="logo" src="https://th.bing.com/th/id/OIP.UvPmeXXOx8sum2VNytWzeAHaJr?pid=Api&rs=1" alt=""> -->
+        <div id="title1">title1</div>
+        <div id="title2">title2</div>
+        <div id="title3">title3</div>
+        <div id="title4">title4</div>
+        <div id="title5">title5</div>
+    </div>
+</template>
+<template id="student-profile-template">
+    <!-- <link rel="stylesheet" href="./CSS/StudentProfile.css"> -->
+    <div class="profile-container">
+        <h1>Thông tin sinh viên</h1>
+        <img src="" alt="Avatar" id="avatar">
+        <div id="imformation-container">
+            <input-wrapper-student id="student-id" label="Mã sinh viên:" value="12345678"></input-wrapper-student>
+            <input-wrapper-student id="full-name" label="Họ và tên:" value="Nguyễn Văn A"></input-wrapper-student>
+            <input-wrapper-student id="date-of-birth" label="Ngày sinh:" value="01/01/2001"></input-wrapper-student>
+            <input-wrapper-student id="majors" label="Ngành học:" value="Công Nghệ thông tin"></input-wrapper-student>
+            <input-wrapper-student id="course" label="Khóa học:" value="K24"></input-wrapper-student>
+            <!-- <inputwrapper-student id="day-register" label="Ngày đăng ký:" value="2/1/2020"></inputwrapper-student> -->
+
+        </div>
+    </div>
+</template>
+
+
+<template id="input-wrapper-student-template">
+    <link rel="stylesheet" href="./CSS/InputWrapper.css">
+    <div class="input-wrapper-x">
+        <label for="" id="infomation-label">label</label>
+        <div id="information-child">information-child</div>
+    </div>
+</template>
+<template id="template-input-wrapper">
+    <link rel="stylesheet" href="./css/inputWrapper.css">
+    <div class="input-wrapper">
+        <label for="" id="input-label"></label>
+        <input type="text" id="input-main">
+        <div id="input-error"></div>
+    </div>
+</template>
+
+<template id="template-form-register">
+    <form class="form-register">
+        <h2>Đăng kí tài khoản</h2>
+        <input-wrapper id="name" label="Tên đăng kí" type="text" error="" value=""></input-wrapper>
+        <input-wrapper id="email" label="Email" type="email" error="" value=""></input-wrapper>
+        <input-wrapper id="password" label="Mật khẩu" type="password" error="" value=""></input-wrapper>
+        <input-wrapper id="password-confirmation" label="Xác thực mật khẩu" type="password" error="" value="">
+        </input-wrapper>
+        <button>Đăng kí</button>
+        <a href="#/sign-in" id="login-link">Đã có tài khoản? Đăng nhập</a>
+    </form>
+</template>
+
+<template id="form-login-template">
+    <form class="form-login">
+        <link rel="stylesheet" href="./css/login.css">
+        <h2 id="panel">Đăng nhập</h2>
+        <div id="main-login">
+            <input-wrapper id="student-id" label="Mã Sinh Viên" type="text"></input-wrapper>
+            <input-wrapper id="password" label='Mật khẩu' type="password"></input-wrapper>
+        </div>
+
+        <button id="loginbox">đăng nhập</button>
+    </form>
+</template>
+
+<!-- Script -->
+<script src="./JS/Navbar.js"></script>
+<script src="./JS/app.js" type="module"></script>
+
+</html>
